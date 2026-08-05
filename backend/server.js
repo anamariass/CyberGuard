@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-import db from './db.js';
+import db from './config/db.js';
 
 
 const app = express();
