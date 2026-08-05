@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+h1 {
+    color: #F59E0B;
+    font-size: 32px;
+    text-align: center;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #FFF4E8;
+    max-width: 50%;
+    width: 400%;
+    margin-bottom: 20px;
+    border: 1px solid #F2D5AE;
+}
+
+form button {
+    border-radius: 8px;
+    background-color: #F59E0B;
+    color: white;
+    height: 45px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background-color: #D97706;
+}
+
+form input {
+    border: 1px solid #E7D7C6;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #3D2C1E;
+    font-size: 15px;
+    padding: 12px 20px;
+    outline: none;
+}
+
+form input:focus {
+    border-color: #F59E0B;
+    box-shadow: 0 0 5px rgba(245, 158, 11, 0.4);
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF4E8;
+    border: 1px solid #F2D5AE;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    width: 50%;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    width: 100%;
+}
+
+.card p {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    color: #3D2C1E;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card span {
+    margin-top: 5px;
+    color: #555;
+    font-weight: normal;
+}
+
+.card button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.card button img {
+    width: 28px;
+}
+
+.card button:hover {
+    opacity: 0.8;
+}
+
+.atualizar-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+}
+form {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
