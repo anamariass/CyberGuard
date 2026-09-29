@@ -28,9 +28,9 @@ router.post("/cadastrar", async (req, res) => {
 
 router.get("/listar", async (req, res) => {
     try {
-        const fornecedores = await Fornecedor.findAll();
+        const fornecedore = await Fornecedor.findAll();
 
-        res.status(200).json(fornecedores);
+        res.status(200).json(fornecedore);
 
     } catch (error) {
         console.error("listarFornecedores error:", error);

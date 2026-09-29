@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/produtos', produtoRouter);
-app.use('/fornecedores', fornecedorRouter);
+app.use('/fornecedor', fornecedorRouter);
 app.use('/estoque', estoqueRouter);
 
 sequelize.authenticate()
