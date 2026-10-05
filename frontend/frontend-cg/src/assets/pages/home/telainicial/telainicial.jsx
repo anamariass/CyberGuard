@@ -1,58 +1,102 @@
-
 import "./telainicial.css";
 
-function Telainicial() {
+function Telainicial({ onEntrar }) {
+
   return (
-    <body>
     <main className="tela-login">
-     <section className="imagem">
-  <div className="texto-imagem">
-    <strong>
-  <h1>
-    Organize seu <br />
-    estoque <span>com</span> <br />
-    <span>facilidade</span>
-  </h1>
-</strong>
-    <img src="/FotoTelai.jpeg" alt="Estoque" />
-  </div>
-</section>
-<form>  
-   <div class="mb-3">
+
+      <section className="imagem">
+
+        <div className="texto-imagem">
+
+          <strong>
+            <h1>
+              Organize seu <br />
+              estoque <span>com</span> <br />
+              <span>facilidade</span>
+            </h1>
+          </strong>
+
+          <img src="/FotoTelai.jpeg" alt="Estoque" />
+
+        </div>
+
+      </section>
+
+      <form>
+
+        <div className="mb-3">
+
           <h1>Bem-vindo</h1>
+
           <h2>Acesse sua conta para começar</h2>
-          
 
-          
-          
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email </label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Digite seu email"
-  />
-</div>
+          <br />
 
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Senha </label>
-  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Digite sua senha"/>
-</div>
-          
-</div>
+          <div className="mb-3">
 
-            <button className="btn ">ENTRAR</button>
+            <label
+              htmlFor="email"
+              className="form-label"
+            >
+              Email
+            </label>
 
-          <p className="cadastro">
-            Não tem uma conta?{" "}
-            <a href="#">Cadastre-se aqui</a>
-          </p>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Digite seu email"
+            />
+
+          </div>
+
+          <br />
+
+          <div className="mb-3">
+
+            <label
+              htmlFor="senha"
+              className="form-label"
+            >
+              Senha
+            </label>
+
+            <input
+              type="password"
+              className="form-control"
+              id="senha"
+              placeholder="Digite sua senha"
+            />
+
+          </div>
+
+        </div>
+
+        <br />
+
+        <button
+          type="button"
+          className="btn"
+          onClick={onEntrar}
+        >
+          ENTRAR
+        </button>
+
+        <br />
+        <br />
+
+        <p className="cadastro">
+          Não tem uma conta?{" "}
+          <a href="#">
+            Cadastre-se aqui
+          </a>
+        </p>
+
       </form>
 
     </main>
-
-    </body>
   );
 }
 
-
-
-
-export default Telainicial
+export default Telainicial;
