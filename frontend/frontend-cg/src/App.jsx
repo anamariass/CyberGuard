@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
-import Telainicial from './assets/pages/home/telainicial/telainicial';
+import Telainicial from './assets/pages/telainicial/telainicial';
 import Menu from './assets/pages/menu/menu';
+import Estoque from './assets/pages/estoque/estoque';
+
 
 function App() {
 
