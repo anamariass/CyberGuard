@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
-import './estoque.css'
-const Trash = "/foto-lixeiraEstoque.jpg";
-const Trashpng = "/lapisEstoque.png";
+
+import './fornecedor.css'
+const Trash = "/lixeiraFornecedor.jpg";
+const Trashpng = "/editarFornecedor.png";
 
 
-function Estoque({ onEstoque }) {
+function Fornecedor() {
   const [users, setUsers] = useState([])
 
   const inputId = useRef()
@@ -112,4 +112,4 @@ function Estoque({ onEstoque }) {
     </div>
   );
 }
-export default Estoque;
+export default Fornecedor;

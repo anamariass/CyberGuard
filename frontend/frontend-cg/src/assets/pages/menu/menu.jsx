@@ -1,28 +1,15 @@
 import "./menu.css";
 
-function Menu({ onSair }) {
-
+function Menu({ onSair, onFornecedores, onEstoque }) {
   return (
     <main className="dashboard">
 
-      {/* MENU LATERAL */}
-
       <aside className="menu-lateral">
 
-        {/* LOGO */}
-
         <div className="logo">
-
-          <div className="logo-icone">
-            🛡️
-          </div>
-
+          <div className="logo-icone">🛡️</div>
           <h1>CyberGuard</h1>
-
         </div>
-
-
-        {/* NAVEGAÇÃO */}
 
         <nav className="navegacao">
 
@@ -31,7 +18,10 @@ function Menu({ onSair }) {
             Início
           </button>
 
-          <button className="item-menu">
+          <button
+            className="item-menu"
+            onClick={onEstoque}
+          >
             <span>▣</span>
             Estoque
           </button>
@@ -41,63 +31,52 @@ function Menu({ onSair }) {
             Relatório
           </button>
 
-          <button className="item-menu">
-            <span>⚙</span>
-            Configurações
+          <button
+            className="item-menu"
+            onClick={onFornecedores}
+          >
+            <span>🏢</span>
+            Fornecedores
           </button>
 
         </nav>
 
-
-        {/* SAIR */}
-
-        <button className="item-menu sair" onClick={onSair}>
+        <button
+          className="item-menu sair"
+          onClick={onSair}
+        >
           <span>⏻</span>
           Sair
         </button>
 
       </aside>
 
-
-      {/* ÁREA PRINCIPAL */}
-
       <section className="conteudo">
 
         <div className="cabecalho">
-
           <h2>Olá! Bem-vinda ao CyberGuard</h2>
-
-          <p>
-            Seja bem-vinda ao seu painel
-          </p>
-
+          <p>Seja bem-vinda ao seu painel</p>
         </div>
-
-
-        {/* CARDS */}
 
         <div className="cards">
 
+          {/* CARD ESTOQUE */}
           <div className="card">
 
-            <div className="icone-card">
-              +
-            </div>
+            <div className="icone-card">+</div>
 
             <h3>Criar estoque</h3>
 
-            <button>
+            <button onClick={onEstoque}>
               Criar agora
             </button>
 
           </div>
 
-
+          {/* CARD RELATÓRIO */}
           <div className="card">
 
-            <div className="icone-card">
-              ▥
-            </div>
+            <div className="icone-card">▥</div>
 
             <h3>Relatório</h3>
 
@@ -107,17 +86,15 @@ function Menu({ onSair }) {
 
           </div>
 
-
+          {/* CARD FORNECEDORES */}
           <div className="card">
 
-            <div className="icone-card">
-              ⚙
-            </div>
+            <div className="icone-card">🏢</div>
 
-            <h3>Configurações</h3>
+            <h3>Fornecedores</h3>
 
-            <button>
-              Configurar
+            <button onClick={onFornecedores}>
+              Ver fornecedores
             </button>
 
           </div>
