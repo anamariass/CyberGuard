@@ -120,3 +120,25 @@ form input:focus {
 form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+  .estoque-voltar {
+    align-self: flex-start;
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+
+    background-color: #eba86d;
+    color: rgb(41, 34, 23);
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.estoque-voltar:hover {
+    background-color: #f0b478;
+}

@@ -4,8 +4,10 @@ import Telainicial from "./assets/pages/telainicial/telainicial";
 import Menu from "./assets/pages/menu/menu";
 import Estoque from "./assets/pages/estoque/estoque";
 import Fornecedor from "./assets/pages/fornecedor/fornecedor";
+import Produtos from "./assets/pages/produtos/produtos";
 
 function App() {
+
   const [pagina, setPagina] = useState("login");
 
   function handleEntrar() {
@@ -24,6 +26,14 @@ function App() {
     setPagina("estoque");
   }
 
+  function handleProdutos() {
+    setPagina("produtos");
+  }
+
+  function handleVoltar() {
+    setPagina("menu");
+  }
+
   return (
     <>
       {pagina === "login" && (
@@ -35,15 +45,20 @@ function App() {
           onSair={handleSair}
           onFornecedores={handleFornecedores}
           onEstoque={handleEstoque}
+          onProdutos={handleProdutos}
         />
       )}
 
       {pagina === "fornecedor" && (
-        <Fornecedor />
+        <Fornecedor onVoltar={handleVoltar} />
       )}
 
       {pagina === "estoque" && (
-        <Estoque />
+        <Estoque onVoltar={handleVoltar} />
+      )}
+
+      {pagina === "produtos" && (
+        <Produtos onVoltar={handleVoltar} />
       )}
     </>
   );

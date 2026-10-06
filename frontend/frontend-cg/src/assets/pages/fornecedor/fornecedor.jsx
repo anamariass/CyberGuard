@@ -1,115 +1,154 @@
-
+import { useEffect, useState, useRef } from 'react'
 import './fornecedor.css'
-const Trash = "/lixeiraFornecedor.jpg";
+const Trash = "/foto-lixeiraFornecedor.png";
 const Trashpng = "/editarFornecedor.png";
 
+function Fornecedor({ onVoltar }) {
 
-function Fornecedor() {
   const [users, setUsers] = useState([])
+  const [editId, setEditId] = useState(null)
 
-  const inputId = useRef()
-  const inputNome = useRef()
-  const inputCategoria = useRef()
-  const inputQuantidade = useRef()
-  const inputPrecoUnitario = useRef()
+  const inputName = useRef()
+  const inputCnpj = useRef()
+  const inputTelefone = useRef()
+  const inputEmail = useRef()
+  const inputEndereco = useRef()
+
 
   async function getUsers() {
-    const usersFromApi = await api.get('/listar')
+    try {
+      const usersFromCrud = await api.get('/fornecedores')
+      setUsers(usersFromCrud.data)
 
-    setUsers(usersFromApi.data)
+    } catch (erro) {
+      console.error('Erro ao buscar fornecedores:', erro)
+    }
+  }
 
-    console.log(users.data)
+  function editUser(user) {
+    inputName.current.value = user.nome
+    inputCnpj.current.value = user.cnpj
+    inputTelefone.current.value = user.telefone
+    inputEmail.current.value = user.email
+    inputEndereco.current.value = user.endereco
+
+    setEditId(user.id)
   }
 
   async function createUsers() {
-    await api.post('/cadastrar', {
-      id: inputId.current.value,
-      nome: inputNome.current.value,
-      categoria: inputCategoria.current.value,
-      quantidade: inputQuantidade.current.value,
-      preco_unitario: inputPrecoUnitario.current.value
-    })
+    try {
 
-    getUsers()
+      if (editId) {
 
+        await api.put(`/fornecedores/${editId}`, {
+          nome: inputName.current.value,
+          cnpj: inputCnpj.current.value,
+          telefone: inputTelefone.current.value,
+          email: inputEmail.current.value,
+          endereco: inputEndereco.current.value
+        })
+
+      } else {
+
+        await api.post('/fornecedores', {
+          nome: inputName.current.value,
+          cnpj: inputCnpj.current.value,
+          telefone: inputTelefone.current.value,
+          email: inputEmail.current.value,
+          endereco: inputEndereco.current.value
+        })
+
+      }
+
+      await getUsers()
+
+      inputName.current.value = ''
+      inputCnpj.current.value = ''
+      inputTelefone.current.value = ''
+      inputEmail.current.value = ''
+      inputEndereco.current.value = ''
+
+      setEditId(null)
+
+    } catch (erro) {
+      console.error('Erro ao cadastrar fornecedor:', erro)
+    }
   }
 
   async function deleteUsers(id) {
-    await api.delete(`/excluir/${id}`)
+    try {
 
-    getUsers()
-  }
+      await api.delete(`/fornecedores/${id}`)
 
+      await getUsers()
 
-  async function atualizarUsers(id) {
-    await api.put(`/atualizar/${id}`, {
-      nome: inputNome.current.value,
-      categoria: inputCategoria.current.value,
-      quantidade: inputQuantidade.current.value,
-      preco_unitario: inputPrecoUnitario.current.value,
-    });
-
-    getUsers();
-  }
-
-  function preencherFormulario(user) {
-    inputId.current.value = user.id;
-    inputNome.current.value = user.nome;
-    inputCategoria.current.value = user.categoria;
-    inputQuantidade.current.value = user.quantidade;
-    inputPrecoUnitario.current.value = user.preco_unitario;
+    } catch (erro) {
+      console.error('Erro ao excluir fornecedor:', erro)
+    }
   }
 
   useEffect(() => {
     getUsers()
   }, [])
 
-
   return (
-
-    <div className="container">
-      <form>
-        <h1>Cadrastro Estoque</h1>
-        <input placeholder="ID" name="id" type="number" ref={inputId} />
-        <input placeholder="Nome do Produto" name="nome do produto" type="text" ref={inputNome} />
-        <input placeholder="Categoria" name="categoria" type="text" ref={inputCategoria} />
-        <input placeholder="Quantidade" name="quantidade" type="number" ref={inputQuantidade} />
-        <input placeholder="Preço Unitário" name="preço unitario" type="number" step="0.01" ref={inputPrecoUnitario} />
-        <button type='button' onClick={createUsers}> Cadastrar </button>
-      </form>
+    <div className='container'>
 
 
-      {users.map(user => (
+        <button
+          className="fornecedor-voltar"
+          onClick={onVoltar}
+        >
+          ← Voltar ao menu
+        </button>
 
-        <div key={user.id} className="card">
-          <div>
-            <p>id: <span>{user.id}</span></p>
-            <p>nome: <span>{user.nome}</span></p>
-            <p>categoria: <span>{user.categoria}</span></p>
-            <p>quantidade: <span>{user.quantidade}</span></p>
-            <p>preço_unitário: <span>{user.preco_unitario}</span></p>
+        <form>
+          <h1>Cadastro de Fornecedores</h1>
+
+          <input placeholder='Nome' type='text' ref={inputName} />
+          <input placeholder='CNPJ' type='text' ref={inputCnpj} />
+          <input placeholder='Telefone' type='text' ref={inputTelefone} />
+          <input placeholder='Email' type='email' ref={inputEmail} />
+          <input placeholder='Endereço' type='text' ref={inputEndereco} />
+
+
+          <button type='button' onClick={createUsers}>
+            {editId ? 'Salvar Alterações' : 'Cadastrar'}
+          </button>
+
+        </form>
+        {users.map(user => (
+          <div key={user.id} className="card">
+
+            <div>
+              <p>Nome: <span>{user.nome}</span></p>
+              <p>CNPJ: <span>{user.cnpj}</span></p>
+              <p>Telefone: <span>{user.telefone}</span></p>
+              <p>Email: <span>{user.email}</span></p>
+              <p>Endereço: <span>{user.endereco}</span></p>
+            </div>
+
+
+            <div className="acoes">
+
+              <button
+                className="editar" onClick={() => editUser(user)}>
+                <img src={Editar} alt="Editar" />
+              </button>
+
+
+              <button
+                className="excluir" onClick={() => deleteUsers(user.id)}>
+                <img src={Lixeira} alt="Excluir" />
+              </button>
+
+            </div>
+
           </div>
-          <button onClick={() => deleteUsers(user.id)}>
-            <img src={Trash} alt="Lixeira" />
-          </button>
+        ))}
 
-          <button
-            onClick={() => preencherFormulario(user)}
-            className="atualizar-button"
-          >
-            <img src={Trashpng} alt="Lápis" />
-          </button>
-
-
-        </div>
-
-
-
-
-      ))}
-
-
-    </div>
-  );
+      </div>
+      )
 }
-export default Fornecedor;
+
+      export default Fornecedor;

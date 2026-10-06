@@ -4,7 +4,7 @@ const Trash = "/foto-lixeiraEstoque.jpg";
 const Trashpng = "/lapisEstoque.png";
 
 
-function Estoque({ onEstoque }) {
+function Estoque({ onVoltar }) {
   const [users, setUsers] = useState([])
 
   const inputId = useRef()
@@ -68,6 +68,14 @@ function Estoque({ onEstoque }) {
   return (
 
     <div className="container">
+
+         <button
+        className="estoque-voltar"
+        onClick={onVoltar}
+      >
+        ← Voltar ao menu
+      </button>
+
       <form>
         <h1>Cadrastro Estoque</h1>
         <input placeholder="ID" name="id" type="number" ref={inputId} />
