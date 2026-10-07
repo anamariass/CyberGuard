@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import api from "../../../api";
 import './fornecedor.css'
 
 const Lixeira = "/foto-lixeiraFornecedor.png"

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import api from "../../../api";
 import './estoque.css'
 const Trash = "/foto-lixeiraEstoque.jpg";
 const Trashpng = "/lapisEstoque.png";

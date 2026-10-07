@@ -1,152 +1,295 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+    height: auto;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 70 px;
-    background-color: #f0d0a1;
-    min-height: 100vh;
 
+    min-height: 100vh;
+    height: auto;
+
+    padding: 70px 20px 50px;
+
+    background-color: #f0d0a1;
 }
+
+/* TÍTULO */
 
 h1 {
-    font-size: 32 px;
-    background-color: rgb(252, 181, 49);
-    color: #222;
-    margin-bottom: 0px;
-    border-radius: 10px 10px 0px 0px;
+    width: 440px;
+    max-width: 90%;
+
+    margin: 0;
+
+    padding: 10px;
+
+    font-size: 32px;
     text-align: center;
-    width: 380px;
-    padding: 6px;
+
+    color: #222;
+    background-color: rgb(252, 181, 49);
+
+    border-radius: 10px 10px 0 0;
 }
+
+/* FORMULÁRIO */
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    padding: 25px;
     align-items: center;
+
     width: 440px;
     max-width: 90%;
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 0 0 10px 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
- form input{
+    gap: 20px;
+
+    padding: 25px;
+
+    background-color: #fff;
+
+    border-radius: 0 0 10px 10px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* INPUTS E SELECT */
+
+form input,
 form select {
-    height: 40px;
+    width: 100%;
+    height: 45px;
+
+    padding: 0 12px;
+
     background-color: #fff;
     color: #333;
+
     font-size: 16px;
-    padding: 0 10px;
+
     outline: none;
-    border: 3px solid #8B4A00;
+
+    border: 3px solid #8b4a00;
     border-radius: 8px;
-}}
-
-    & button {
-        border: none;
-        border-radius: 10px;
-        background-color: rgb(255, 166, 0);
-        height: 42px;
-        width: 180px;
-        font-weight: bold;
-        cursor: pointer;
-        color: white;
-        font-size: 18px;
-        transition: .4s;
-    }
-
-    & button:hover {
-        background-color: #713800;
-    }
 }
 
-.card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    gap: 10px;
-    padding: 10px;
-    width: 440px;
-    max-width: 90%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-
-    & p {
-        color: #8a5200;
-        ;
-        font-weight: bold;
-        font-size: 16px;
-
-        & span {
-            font-weight: normal;
-        }
-    }
-
-    .delete-button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .delete-button:hover {
-        opacity: 0.8;
-    }
-
-    .edit-button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .edit-button:hover {
-        opacity: 0.8;
-    }
-
-    .card-buttons {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
+form input:focus,
+form select:focus {
+    border-color: #a95000;
 }
 
+/* BOTÃO */
 
-.produto-voltar {
-    align-self: flex-start;
-    margin-bottom: 20px;
+form button {
+    width: 180px;
+    height: 42px;
+
     border: none;
     border-radius: 10px;
-    padding: 12px 20px;
-    background-color: #a95000;
+
+    background-color: rgb(143, 100, 14);
     color: white;
-    font-size: 16px;
+
+    font-size: 18px;
     font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+form button:hover {
+    background-color: #713800;
+}
+
+/* CARD DO PRODUTO */
+
+.card {
+    display: grid;
+
+    grid-template-columns: 1.3fr 2fr 0.8fr 0.8fr 1fr auto;
+
+    align-items: start;
+
+    gap: 15px;
+
+    width: 700px;
+    max-width: 90%;
+
+    margin: 10px;
+    padding: 20px;
+
+    background-color: #fff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* TEXTO DO CARD */
+
+.card p {
+    margin: 0;
+
+    color: #8a5200;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    overflow-wrap: break-word;
+}
+
+.card p span {
+    font-weight: normal;
+}
+
+/* BOTÕES DO CARD */
+
+.card-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+/* BOTÃO EXCLUIR */
+
+.delete-button {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+
+    border: none;
+
     cursor: pointer;
 }
 
+.delete-button:hover {
+    opacity: 0.8;
+}
+
+/* BOTÃO EDITAR */
+
+.edit-button {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    opacity: 0.8;
+}
+
+/* BOTÃO VOLTAR */
+
+.produto-voltar {
+    align-self: flex-start;
+
+    margin-bottom: 20px;
+
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #a95000;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
 
 .produto-voltar:hover {
     background-color: #713800;
 }
 
+/* ACESSIBILIDADE */
+
 .sr-only {
     position: absolute;
+
     width: 1px;
     height: 1px;
+
     padding: 0;
     margin: -1px;
+
     overflow: hidden;
+
     clip: rect(0, 0, 0, 0);
+
     white-space: nowrap;
+
     border: 0;
 }
 
-form input {
-   border: 3px solid #A05200;
+/* RESPONSIVO */
 
+@media (max-width: 700px) {
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    h1,
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-buttons {
+        grid-column: 1 / -1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .card-buttons {
+        grid-column: auto;
+    }
 }
