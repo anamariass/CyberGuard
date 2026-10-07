@@ -101,7 +101,6 @@ h1 {
     font-size: 13px;
 }
 
-
 .botao-submit {
     width: 100%;
     height: 45px;
@@ -122,8 +121,10 @@ h1 {
     outline: 3px solid #174ea6;
 }
 
+/* --- LISTA E CARDS DE FORNECEDORES CORRIGIDOS --- */
+
 .lista-fornecedores {
-    width: 440px;
+    width: 900px;
     max-width: 100%;
 }
 
@@ -141,60 +142,40 @@ h2 {
     box-shadow: 0 3px 8px #0002;
 }
 
-
 .card {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) auto;
     align-items: center;
     gap: 15px;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 20px;
+    margin: 15px 0;
     background: white;
     border-radius: 8px;
     box-shadow: 0 3px 8px #0002;
+    word-break: break-word;
 }
-
 
 .card p {
-    margin: 7px 0;
+    margin: 0;
     color: #663800;
+    font-weight: bold;
 }
-
 
 .card span {
     color: #222;
-    margin-left: 5px;
+    font-weight: normal;
+    display: block;
+    margin-top: 4px;
 }
-
 
 .acoes {
     display: flex;
     gap: 8px;
 }
 
-
 .card button {
     width: 42px;
     height: 42px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.card button:focus {
-    outline: 3px solid #174ea6;
-}
-
-
-.card button img {
-    width: 22px;
-    height: 22px;
-}
-
-
-.card button {
-    width: 50px;
-    height: 50px;
     border: none;
     border-radius: 50%;
     display: flex;
@@ -202,31 +183,37 @@ h2 {
     align-items: center;
     cursor: pointer;
     transition: .3s;
-    box-shadow:0 5px 12px rgba(0,0,0,.15);
+    box-shadow: 0 5px 12px rgba(0,0,0,.15);
 }
 
+.card button:focus {
+    outline: 3px solid #174ea6;
+}
+
+.card button img {
+    width: 20px;
+    height: 20px;
+}
 
 .editar {
     background: #f5ad24;
 }
 
-
 .editar:hover {
     background: #d99100;
 }
-
 
 .excluir {
     background: #f3c4b2;
 }
 
-
 .excluir:hover {
     background: #df9478;
 }
 
-@media (max-width: 600px) {
+/* --- ADAPTAÇÃO MOBILE --- */
 
+@media (max-width: 768px) {
     .container {
         padding: 20px 12px;
     }
@@ -246,11 +233,12 @@ h2 {
     }
 
     .card {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
     .acoes {
         align-self: flex-end;
+        margin-top: 10px;
     }
 }

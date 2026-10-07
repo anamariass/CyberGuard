@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import api from "../../../api";
 import './fornecedor.css'
 
-const Lixeira = "/foto-lixeiraFornecedor.png"
+const Lixeira = "/lixeiraFornecedor.png"
 const Editar = "/editarFornecedor.png"
 
 function Fornecedor({ onVoltar }) {
@@ -18,15 +18,15 @@ function Fornecedor({ onVoltar }) {
 
   async function getUsers() {
     try {
-      const usersFromCrud = await api.get('/fornecedores')
+      const usersFromCrud = await api.get('/fornecedor/listar')
       setUsers(usersFromCrud.data)
-
     } catch (erro) {
       console.error('Erro ao buscar fornecedores:', erro)
     }
   }
 
   function limparFormulario() {
+
     inputName.current.value = ''
     inputCnpj.current.value = ''
     inputTelefone.current.value = ''
@@ -37,6 +37,7 @@ function Fornecedor({ onVoltar }) {
   }
 
   function editUser(user) {
+
     inputName.current.value = user.nome || ''
     inputCnpj.current.value = user.cnpj || ''
     inputTelefone.current.value = user.telefone || ''
@@ -49,6 +50,7 @@ function Fornecedor({ onVoltar }) {
   }
 
   async function createUsers(event) {
+
     event.preventDefault()
 
     const fornecedor = {
@@ -60,16 +62,21 @@ function Fornecedor({ onVoltar }) {
     }
 
     try {
+
       if (editId !== null) {
+
         await api.put(
-          `/fornecedores/${editId}`,
+          `/fornecedor/atualizar/${editId}`,
           fornecedor
         )
+
       } else {
+
         await api.post(
-          '/fornecedores',
+          '/fornecedor/cadastrar',
           fornecedor
         )
+
       }
 
       await getUsers()
@@ -79,14 +86,17 @@ function Fornecedor({ onVoltar }) {
       inputName.current.focus()
 
     } catch (erro) {
+
       console.error(
         'Erro ao salvar fornecedor:',
         erro
       )
+
     }
   }
 
   async function deleteUsers(id, nome) {
+
     const confirmou = window.confirm(
       `Deseja realmente excluir o fornecedor ${nome}?`
     )
@@ -96,15 +106,20 @@ function Fornecedor({ onVoltar }) {
     }
 
     try {
-      await api.delete(`/fornecedores/${id}`)
+
+      await api.delete(
+        `/fornecedor/excluir/${id}`
+      )
 
       await getUsers()
 
     } catch (erro) {
+
       console.error(
         'Erro ao excluir fornecedor:',
         erro
       )
+
     }
   }
 
@@ -113,6 +128,7 @@ function Fornecedor({ onVoltar }) {
   }, [])
 
   return (
+
     <main className="container">
 
       <button
@@ -120,8 +136,11 @@ function Fornecedor({ onVoltar }) {
         className="fornecedor-voltar"
         onClick={onVoltar}
       >
+
         <span aria-hidden="true">←</span>
+
         <span>Voltar ao menu</span>
+
       </button>
 
       <form
@@ -134,6 +153,7 @@ function Fornecedor({ onVoltar }) {
         </h1>
 
         <div className="campo">
+
           <label htmlFor="nome">
             Nome
           </label>
@@ -147,9 +167,11 @@ function Fornecedor({ onVoltar }) {
             autoComplete="organization"
             required
           />
+
         </div>
 
         <div className="campo">
+
           <label htmlFor="cnpj">
             CNPJ
           </label>
@@ -163,9 +185,11 @@ function Fornecedor({ onVoltar }) {
             inputMode="numeric"
             required
           />
+
         </div>
 
         <div className="campo">
+
           <label htmlFor="telefone">
             Telefone
           </label>
@@ -180,9 +204,11 @@ function Fornecedor({ onVoltar }) {
             inputMode="tel"
             required
           />
+
         </div>
 
         <div className="campo">
+
           <label htmlFor="email">
             E-mail
           </label>
@@ -196,9 +222,11 @@ function Fornecedor({ onVoltar }) {
             autoComplete="email"
             required
           />
+
         </div>
 
         <div className="campo">
+
           <label htmlFor="endereco">
             Endereço
           </label>
@@ -212,15 +240,18 @@ function Fornecedor({ onVoltar }) {
             autoComplete="street-address"
             required
           />
+
         </div>
 
         <button
           type="submit"
           className="botao-submit"
         >
+
           {editId !== null
             ? 'Salvar alterações'
             : 'Cadastrar fornecedor'}
+
         </button>
 
       </form>
@@ -290,11 +321,13 @@ function Fornecedor({ onVoltar }) {
                   aria-label={`Editar fornecedor ${user.nome}`}
                   title={`Editar fornecedor ${user.nome}`}
                 >
+
                   <img
                     src={Editar}
                     alt=""
                     aria-hidden="true"
                   />
+
                 </button>
 
                 <button
@@ -306,11 +339,13 @@ function Fornecedor({ onVoltar }) {
                   aria-label={`Excluir fornecedor ${user.nome}`}
                   title={`Excluir fornecedor ${user.nome}`}
                 >
+
                   <img
                     src={Lixeira}
                     alt=""
                     aria-hidden="true"
                   />
+
                 </button>
 
               </div>
@@ -324,6 +359,7 @@ function Fornecedor({ onVoltar }) {
       </section>
 
     </main>
+
   )
 }
 
