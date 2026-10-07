@@ -15,7 +15,7 @@ function Estoque({ onVoltar }) {
   const inputPrecoUnitario = useRef()
 
   async function getUsers() {
-    const usersFromApi = await api.get('/listar')
+    const usersFromApi = await api.get('estoque/listar')
 
     setUsers(usersFromApi.data)
 
@@ -23,7 +23,7 @@ function Estoque({ onVoltar }) {
   }
 
   async function createUsers() {
-    await api.post('/cadastrar', {
+    await api.post('estoque/cadastrar', {
       id: inputId.current.value,
       nome: inputNome.current.value,
       categoria: inputCategoria.current.value,
@@ -36,14 +36,14 @@ function Estoque({ onVoltar }) {
   }
 
   async function deleteUsers(id) {
-    await api.delete(`/excluir/${id}`)
+    await api.delete(`estoque/excluir/${id}`)
 
     getUsers()
   }
 
 
   async function atualizarUsers(id) {
-    await api.put(`/atualizar/${id}`, {
+    await api.put(`estoque/atualizar/${id}`, {
       nome: inputNome.current.value,
       categoria: inputCategoria.current.value,
       quantidade: inputQuantidade.current.value,
