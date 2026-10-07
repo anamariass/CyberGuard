@@ -1,82 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 60px 20px;
     min-height: 100vh;
-    background: linear-gradient(135deg, hsl(33, 93%, 78%), #f8cc99);
+    padding: 30px 20px;
+    background: #f3d2a0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fornecedor-voltar {
+    align-self: flex-start;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+    background: #8a3f00;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fornecedor-voltar:hover {
+    background: #642d00;
+}
+
+.fornecedor-voltar:focus {
+    outline: 3px solid #174ea6;
+}
+
+form {
+    width: 440px;
+    max-width: 100%;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #0003;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 h1 {
-    color: #C2410C;
-    font-size: 42px;
-    font-weight: 800;
-    margin-bottom: 35px;
-    letter-spacing: 1px;
+    margin: -25px -25px 10px;
+    padding: 15px;
+    background: #f5ad24;
+    color: #222;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 10px 10px 0 0;
+}
+
+.descricao-formulario {
+    margin: 0 0 10px;
+    color: #444;
     text-align: center;
     text-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
 
-form {
+.campo {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 45px;
-    width: 700px;
-    max-width: 90%;
-    border-radius: 30px;
-    background: rgba(255,247,237,.95);
-    box-shadow: 0 15px 35px rgba(0,0,0,.18);
-    margin-bottom: 40px;
-    transition: .3s;
+    gap: 5px;
 }
 
-
-form:hover {
-    transform: translateY(-3px);
+.campo label {
+    color: #663800;
+    font-weight: bold;
 }
 
-
-form input {
-    height: 52px;
-    border: 2px solid #FDBA74;
-    border-radius: 30px;
-    padding: 0 20px;
+.campo input {
+    width: 100%;
+    height: 42px;
+    padding: 8px;
+    border: 3px solid #a64f00;
+    border-radius: 6px;
     font-size: 16px;
+    color: #222;
     background: white;
+}
+
+.campo input::placeholder {
+    color: #666;
+}
+
+.campo input:focus {
+    outline: 3px solid #174ea6;
+    border-color: #174ea6;
+}
+
+.texto-ajuda {
     color: #444;
-    outline: none;
-    transition: .3s;
+    font-size: 13px;
 }
 
 
-form input::placeholder {
-    color: #999;
-}
-
-
-form input:focus {
-    border-color: #EA580C;
-    box-shadow: 0 0 12px rgba(234,88,12,.25);
-}
-
-
-form button {
-    height: 52px;
-    border-radius: 30px;
-    border: none;
-    background: linear-gradient(90deg,#EA580C,#F97316);
+.botao-submit {
+    width: 100%;
+    height: 45px;
+    background: #f59f00;
     color: white;
-    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: .3s;
 }
 
+.botao-submit:hover {
+    background: #d98200;
+}
 
-form button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 18px rgba(234,88,12,.35);
+.botao-submit:focus {
+    outline: 3px solid #174ea6;
+}
+
+.lista-fornecedores {
+    width: 440px;
+    max-width: 100%;
+}
+
+h2 {
+    color: #633900;
+    font-size: 24px;
+}
+
+.nenhum-fornecedor {
+    padding: 20px;
+    background: white;
+    color: #444;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px #0002;
 }
 
 
@@ -84,106 +146,49 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    width: 700px;
-    max-width: 90%;
-
-    padding: 25px 30px;
-    margin: 15px 0;
-
-    border-radius: 25px;
-    background: #FFFFFF;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.15);
-
-    transition: .3s;
-}
-
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.20);
+    gap: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px #0002;
 }
 
 
 .card p {
-    margin: 10px 0;
-    color: #9A3412;
-    font-size: 17px;
-    font-weight: 700;
+    margin: 7px 0;
+    color: #663800;
 }
 
 
 .card span {
-    color: #444;
-    font-weight: 500;
-    margin-left: 8px;
+    color: #222;
+    margin-left: 5px;
 }
 
 
 .acoes {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 
 .card button {
-    width: 50px;
-    height: 50px;
-
+    width: 42px;
+    height: 42px;
     border: none;
-    border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    border-radius: 6px;
     cursor: pointer;
-
-    transition: .3s;
-
-    box-shadow:0 5px 12px rgba(0,0,0,.15);
 }
 
-
-.editar {
-    background-color: #FEF3C7;
-}
-
-
-.editar:hover {
-    background-color: #FACC15;
-    transform: translateY(-4px) rotate(5deg);
-}
-
-
-.excluir {
-    background-color: #FEE2E2;
-}
-
-
-.excluir:hover {
-    background-color: #EF4444;
-    transform: translateY(-4px) rotate(-5deg);
+.card button:focus {
+    outline: 3px solid #174ea6;
 }
 
 
 .card button img {
-    width: 23px;
-    height: 23px;
-    color: #444;
-    font-weight: 500;
-    margin-left: 8px;
-}
-
-
-.acoes {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    width: 22px;
+    height: 22px;
 }
 
 
@@ -202,50 +207,50 @@ form button:hover {
 
 
 .editar {
-    background-color: #FEF3C7;
+    background: #f5ad24;
 }
 
 
 .editar:hover {
-    background-color: #FACC15;
-    transform: translateY(-4px) rotate(5deg);
+    background: #d99100;
 }
 
 
 .excluir {
-    background-color: #FEE2E2;
+    background: #f3c4b2;
 }
 
 
 .excluir:hover {
-    background-color: #EF4444;
-    transform: translateY(-4px) rotate(-5deg);
+    background: #df9478;
 }
 
+@media (max-width: 600px) {
 
-.card button img {
-    width: 23px;
-    height: 23px;
-}
+    .container {
+        padding: 20px 12px;
+    }
 
-  .fornecedor-voltar {
-    align-self: flex-start;
-    margin-bottom: 20px;
+    form {
+        width: 100%;
+        padding: 20px;
+    }
 
-    border: none;
-    border-radius: 10px;
+    h1 {
+        margin: -20px -20px 10px;
+        font-size: 25px;
+    }
 
-    padding: 12px 20px;
+    .lista-fornecedores {
+        width: 100%;
+    }
 
-    background-color: #eba86d;
-    color: rgb(41, 34, 23);
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.fornecedor-voltar:hover {
-    background-color: #f0b478;
+    .acoes {
+        align-self: flex-end;
+    }
 }
